@@ -6,7 +6,7 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   return (
-    <HStack justifyContent="space-between"px={[0,10,30]} py="2">
+    <HStack justifyContent="space-between" px={[0, 10, 30]} py="2">
       <HStack>
         <Image src="/assets/Logo.svg" width={50} height={50} />
         <Heading
@@ -18,7 +18,7 @@ const Navbar = (props: Props) => {
           Sakura Protocol
         </Heading>
       </HStack>
-      <Button variant={"primary"}>Button Here</Button>
+      <Button variant={"pinkGradient"}>Button Here</Button>
     </HStack>
   );
 };
