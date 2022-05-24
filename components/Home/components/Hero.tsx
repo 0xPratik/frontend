@@ -22,7 +22,7 @@ const Hero = (props: Props) => {
             bgClip="text"
             fontWeight={"800"}
             lineHeight="82px"
-            fontSize="66px"
+            fontSize={["50px", "50px", "50px", "50px", "60px"]}
             textAlign="center"
           >
             Your Solana Powered E-Commerce Store
@@ -32,7 +32,7 @@ const Hero = (props: Props) => {
           px={[0, 40, 60]}
           color="#DBDBDB"
           textAlign="center"
-          fontSize="22px"
+          fontSize={["16px", "16px", "22px"]}
           fontWeight="400"
           lineHeight="36px"
         >
@@ -41,7 +41,7 @@ const Hero = (props: Props) => {
           quibusdam.
         </Text>
         <HStack>
-          <Button size={"xl"}  variant={"filled"}>
+          <Button size={"xl"} variant={"filled"}>
             Button Here
           </Button>
           <Button size={"xl"} variant={"outlined"}>
