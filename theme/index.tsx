@@ -35,6 +35,14 @@ const theme = extendTheme({
         }),
       },
     },
+    Input: {
+      variants: {
+        ctc: () => ({
+          border: "1px solid #ffffff",
+          bg: "transparent",
+        }),
+      }
+    },
   },
 });
 
