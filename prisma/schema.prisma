@@ -2,20 +2,81 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-  referentialIntegrity = "prisma"
+
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
-model Star {
-  id              Int       @default(autoincrement()) @id
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  name            String    @db.VarChar(255)
-  constellation   String    @db.VarChar(255)
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  firstName String
+  lastName  String
+  address   Address?
+  payments  Payment[]
+  orders    Order[]
+}
+
+model Address {
+  id          Int    @id @default(autoincrement())
+  city        String
+  country     String
+  postal_code Int
+  suite       String
+  phone_no    String
+  user        User   @relation(fields: [userId], references: [id])
+  userId      Int    @unique
+
+  @@index([userId])
+}
+
+model Product {
+  id       Int        @id @default(autoincrement())
+  title    String
+  desc     String
+  price    Int
+  image    String
+  Order    Order?     @relation(fields: [orderId], references: [id])
+  orderId  Int?
+  category Category[]
+
+  @@index([orderId])
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?
+
+  @@index([productId])
+}
+
+model Order {
+  id        Int       @id @default(autoincrement())
+  orderDate DateTime
+  products  Product[]
+  payment   Payment?
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+
+  @@index([userId])
+}
+
+model Payment {
+  id      Int    @id @default(autoincrement())
+  amount  Int
+  txSig   String
+  order   Order  @relation(fields: [orderId], references: [id])
+  orderId Int    @unique
+  User    User?  @relation(fields: [userId], references: [id])
+  userId  Int?
+
+  @@index([userId])
 }
