@@ -30,9 +30,10 @@ const Footer = (props: Props) => {
           <Text px="3" py="2">Submit your email to stay in the loop</Text>
         </div>
 
-        <InputGroup width={["full", "30rem"]}>
+        <InputGroup  width={["full", "30rem"]}>
           <Input
             py={"6"}
+            
             borderRadius={"100"}
             bg="#ffffff"
             color={"#787777"}

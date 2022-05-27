@@ -1,5 +1,6 @@
 import { extendTheme, theme as base } from "@chakra-ui/react";
-
+import defaultTheme from "@chakra-ui/theme";
+import { StyleFunctionProps } from "@chakra-ui/theme-tools";
 const theme = extendTheme({
   fonts: {
     body: `Lexend`,
@@ -35,13 +36,33 @@ const theme = extendTheme({
         }),
       },
     },
+    FormLabel: {
+      variants: {
+        darklabel: () => { 
+         
+          return {
+            color: "#CFCFCF",
+            fontWeight: "400",
+            lineHeight: "20px",
+            marginBottom: "16px",
+            
+          };
+        }
+      }
+    },
+    
     Input: {
       variants: {
         ctc: () => ({
           border: "1px solid #ffffff",
           bg: "transparent",
         }),
-      }
+        darkinput: () => ({
+          color: "red.500",
+          bg: "transparent",
+          h:"6rem",
+        }),
+      },
     },
   },
 });
