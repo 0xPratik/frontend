@@ -41,7 +41,7 @@ const Hero = (props: Props) => {
           quibusdam.
         </Text>
         <HStack>
-          <Button size={"xl"} variant={"filled"}>
+          <Button size={"xl"} variant={"filled"} mr={4}>
             Button Here
           </Button>
           <Button size={"xl"} variant={"outlined"}>
