@@ -12,9 +12,9 @@ import {
   Button,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import Logo from "../components/common/Logo";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import Link from "next/link";
+import Logo from "../../components/common/Logo";
 type Props = {};
 
 const SignUp = (props: Props) => {
