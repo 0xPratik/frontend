@@ -66,6 +66,7 @@ const SignUp = (props: Props) => {
             <FormControl>
               <FormLabel variant={"darklabel"}>Username</FormLabel>
               <Input
+                backgroundColor={"#2E2E2E"}
                 h="3.75rem"
                 placeholder="eg. John Doe"
                 variant={"darkinput"}
@@ -76,6 +77,7 @@ const SignUp = (props: Props) => {
             <FormControl>
               <FormLabel variant={"darklabel"}>Email Address</FormLabel>
               <Input
+                backgroundColor={"#2E2E2E"}
                 h="3.75rem"
                 placeholder="name@email.com"
                 variant={"darkinput"}
@@ -88,6 +90,7 @@ const SignUp = (props: Props) => {
               <FormLabel variant={"darklabel"}>Password</FormLabel>
               <InputGroup>
                 <Input
+                  backgroundColor={"#2E2E2E"}
                   h="3.75rem"
                   placeholder="Enter your password"
                   variant={"darkinput"}

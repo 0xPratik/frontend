@@ -37,7 +37,7 @@ const Login = (props: Props) => {
         <Logo />
       </Box>
       <Box
-        height={["full",'auto']}
+        height={["full", "auto"]}
         opacity={"0.9"}
         w={["full", "sm", "md", "lg"]}
         bg={"#1F1F1F"}
@@ -69,6 +69,7 @@ const Login = (props: Props) => {
                 h="3.75rem"
                 placeholder="name@email.com"
                 variant={"darkinput"}
+                backgroundColor={"#2E2E2E"}
                 _placeholder={{ color: "#8F8F8F" }}
                 type="email"
               />
@@ -79,6 +80,7 @@ const Login = (props: Props) => {
               <InputGroup>
                 <Input
                   h="3.75rem"
+                  backgroundColor={"#2E2E2E"}
                   placeholder="Enter your password"
                   variant={"darkinput"}
                   _placeholder={{ color: "#8F8F8F" }}

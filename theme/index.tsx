@@ -38,19 +38,17 @@ const theme = extendTheme({
     },
     FormLabel: {
       variants: {
-        darklabel: () => { 
-         
+        darklabel: () => {
           return {
             color: "#CFCFCF",
             fontWeight: "400",
             lineHeight: "20px",
             marginBottom: "16px",
-            
           };
-        }
-      }
+        },
+      },
     },
-    
+
     Input: {
       variants: {
         ctc: () => ({
@@ -59,8 +57,11 @@ const theme = extendTheme({
         }),
         darkinput: () => ({
           color: "red.500",
-          bg: "transparent",
-          h:"6rem",
+          h: "6rem",
+          bg: "#2E2E2E",
+          // _placeholder: {
+          //   backgroundColor: "#2E2E2E",
+          // },
         }),
       },
     },
