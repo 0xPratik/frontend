@@ -23,11 +23,26 @@ const SignUp = (props: Props) => {
     <VStack
       height={"100vh"}
       bgGradient="linear(to-b, '#111111', yellow.400, pink.200)"
+      _before={{
+        content: '""',
+        bgImage: "url('/assets/bg/Group 6.svg')",
+        pos: "absolute",
+        top: "65%",
+        right: 0,
+        left: 0,
+        bottom: 0,
+      }}
     >
       <Box py="10" display={["none", "block"]}>
         <Logo />
       </Box>
-      <Box w={["full", "sm", "md", "lg"]} bg={"#1F1F1F"} p={["5", "10"]}>
+      <Box
+        w={["full", "sm", "md", "lg"]}
+        bg={"#1F1F1F"}
+        p={["5", "10"]}
+        height={["full", "auto"]}
+        opacity={"0.9"}
+      >
         <VStack spacing={12}>
           <VStack spacing={5}>
             <Box py="6" display={["block", "none"]}>
@@ -97,7 +112,6 @@ const SignUp = (props: Props) => {
                   </Button>
                 </InputRightElement>
               </InputGroup>
-              
             </FormControl>
           </Stack>
           <Stack w={"100%"} spacing={5}>
