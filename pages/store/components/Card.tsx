@@ -1,3 +1,5 @@
+import { SearchIcon } from "@chakra-ui/icons";
+import { IconButton } from "@chakra-ui/react";
 import {
   Heading,
   Avatar,
@@ -25,7 +27,25 @@ const Card = (props: Props) => {
         rounded={"xl"}
         overflow={"hidden"}
         borderWidth={"0.5px"}
+        position="relative"
       >
+        <IconButton
+          _active={{
+            bg: "transparent",
+            border: "none",
+          }}
+          _focus={{ bg: "transparent", border: "none" }}
+          _hover={{
+            bg: "transparent",
+          }}
+          bg={"#2B2B2B"}
+          position={"absolute"}
+          zIndex={500}
+          right={"0"}
+          aria-label="like button"
+          icon={<Image w={50} src="\assets\cardicon\Group 3.png" />}
+          // icon={<SearchIcon />}
+        />
         <VStack spacing={4}>
           <Image
             h={"226px"}
@@ -79,7 +99,12 @@ const Card = (props: Props) => {
               </Box>
 
               <Box>
-                <Button variant={"addtocart"}>Add to cart</Button>
+                <Button
+                  leftIcon={<Image src="\assets\cardicon\cart 1.svg" />}
+                  variant={"addtocart"}
+                >
+                  Add to cart
+                </Button>
               </Box>
             </Flex>
           </VStack>

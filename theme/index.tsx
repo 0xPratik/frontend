@@ -37,7 +37,6 @@ const theme = extendTheme({
         addtocart: () => ({
           bg: "#FFF4F9",
           color: "#D6096E",
-          size: "xl",
         }),
       },
     },
