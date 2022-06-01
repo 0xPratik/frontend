@@ -5,7 +5,7 @@ import Card from './Card';
 type Props = {}
 const CardView = (props: Props) => {
   return (
-    <Container maxWidth={"100%"} px={[0,10,20,40,50]}>
+    <Container paddingTop={100} maxW={["30em", "48em", "62em", "93em"]}>
       <Grid
         gridTemplateColumns={{
           sm: "repeat(1, 1fr)",

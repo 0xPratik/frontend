@@ -20,7 +20,7 @@ const Card = (props: Props) => {
   return (
     <Center>
       <Box
-        maxW={"381px"}
+        maxW={"361px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
         boxShadow={"2xl"}
