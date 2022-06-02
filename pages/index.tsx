@@ -7,8 +7,7 @@ import Hero from '../components/Home/components/Hero'
 const Home: NextPage = () => {
   return (
     <div>
-      <HomePage />
-     
+      <HomePage /> 
     </div>
   );
 }

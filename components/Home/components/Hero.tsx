@@ -36,16 +36,14 @@ const Hero = (props: Props) => {
           fontWeight="400"
           lineHeight="36px"
         >
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut amet
-          inventore dicta impedit aspernatur harum sunt iure nihil ratione
-          quibusdam.
+          Spin up your E-commerce Web3 Store with awesome features. Make sure to register yourselves for the launch. 
         </Text>
         <HStack>
           <Button size={"xl"} variant={"filled"} mr={4}>
-            Button Here
+            Register Now
           </Button>
           <Button size={"xl"} variant={"outlined"}>
-            Button Here
+            Contact us
           </Button>
         </HStack>
       </VStack>
