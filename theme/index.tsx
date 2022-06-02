@@ -34,6 +34,10 @@ const theme = extendTheme({
           bg: "transparent",
           border: "2px solid #ffffff",
         }),
+        addtocart: () => ({
+          bg: "#FFF4F9",
+          color: "#D6096E",
+        }),
       },
     },
     FormLabel: {
@@ -59,9 +63,6 @@ const theme = extendTheme({
           color: "red.500",
           h: "6rem",
           bg: "#2E2E2E",
-          // _placeholder: {
-          //   backgroundColor: "#2E2E2E",
-          // },
         }),
       },
     },
