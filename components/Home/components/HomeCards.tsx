@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   GridItem,
+  Image,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import React from "react";
@@ -26,13 +27,24 @@ const Card = (props: CardProps) => {
       <VStack
         bg={`${props.color}`}
         color="#000000"
-        py={[10,20]}
+        // py={[10, 20]}
+        py={"auto"}
         boxShadow="lg"
         m="4"
         borderRadius="xl"
         spacing={8}
+        justify="center"
+        align="center"
+        height={["430px", "500px"]}
       >
-        <img src={props.image} />
+        {/* <img src={props.image} />
+         */}
+        <Image
+          boxSize={['100','100']}
+          objectFit="cover"
+          src={props.image}
+          alt="Dan Abramov"
+        />
         <Heading size="lg" px={10} fontWeight={"800"} textAlign="center">
           {props.heading}
         </Heading>

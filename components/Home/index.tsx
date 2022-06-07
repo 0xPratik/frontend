@@ -1,5 +1,6 @@
 import { Container, Heading } from '@chakra-ui/react';
 import React from 'react'
+import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import HomeCards from './components/HomeCards';
@@ -13,7 +14,8 @@ const index = (props: Props) => {
       <Navbar />
       <Hero />
       <HomeCards />
-      <Footer/>
+      <CTA />
+      <Footer />
     </Container>
   );
 }

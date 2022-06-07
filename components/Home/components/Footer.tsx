@@ -1,61 +1,95 @@
-import { Text, Heading, HStack, VStack, Input, InputGroup, InputRightElement, Button, Flex, Spacer, Box } from '@chakra-ui/react'
-import React from 'react'
+import {
+  Text,
+  Heading,
+  HStack,
+  VStack,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Button,
+  Flex,
+  Spacer,
+  Box,
+  Container,
+} from "@chakra-ui/react";
+import React from "react";
 import Image from "next/image";
-type Props = {}
+import Link from "next/link";
+type Props = {};
 
 const Footer = (props: Props) => {
   return (
     // <HStack justifyContent="space-between" px={[0, 10, 30]} py="2">
-    <Flex direction={{ base: "column", md: "row" }} marginTop={["10","20"]}>
-      <HStack px={["7", "0"]}>
-        <Image src="/assets/Logo.svg" width={50} height={50} />
+    <Container maxW={"container.xl"} paddingBottom={['5']}>
+      <Flex
+        justifyContent={"space-between"}
+        direction={{ base: "column", md: "row" }}
+        marginTop={["10", "20"]}
+      >
+        <HStack >
+          <Image src="/assets/Logo.svg" width={50} height={50} />
 
-        <Heading
-          color={"#FFA7D2"}
-          fontWeight="800"
-          fontSize={"20px"}
-          lineHeight="25px"
-        >
-          Sakura Protocol
-        </Heading>
-      </HStack>
-      <Spacer />
-      <Box w="150" px={["7", "0"]}>
-        <Image src="/assets/Badge.svg" width={"150%"} height="100%" />
-      </Box>
+          <Heading
+            color={"#FFA7D2"}
+            fontWeight="800"
+            fontSize={"20px"}
+            lineHeight="25px"
+          >
+            Sakura Protocol
+          </Heading>
+        </HStack>
 
-      <Spacer />
-      <Flex direction={"column"}  justifyContent={"center"} >
-        <div>
-          <Text px="3" py="2">Submit your email to stay in the loop</Text>
-        </div>
+        <Box w="150" >
+          <Image src="/assets/Badge.svg" width={"150%"} height="100%" />
+        </Box>
 
-        <InputGroup  width={["full", "30rem"]}>
-          <Input
-            py={"6"}
-            
-            borderRadius={"100"}
-            bg="#ffffff"
-            color={"#787777"}
-            _placeholder={{
-              color: "#787777",
-              fontWeight: "500",
-              fontSize: "14.5px",
-              lineHeight: "18.43px",
-            }}
-            size={"lg"}
-            type={"text"}
-            variant="ctc"
-            placeholder="name@mail.com"
-          />
-          <InputRightElement px="auto" style={{ margin: "4px" }} width="10rem">
-            <Button variant={"pinkGradient"}>Send me updates</Button>
-          </InputRightElement>
-        </InputGroup>
+        <Box w="150" >
+          <Flex direction={"column"}>
+            <Text fontSize={"14px"} fontWeight="400" color={"#FFFFFF"}>
+              Follow us
+            </Text>
+            <HStack marginTop={"3"} spacing={3}>
+              <Link href="http://twitter.com">
+                <a>
+                  <svg
+                    width="29"
+                    height="24"
+                    viewBox="0 0 29 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M28.7344 2.83422C27.6788 3.31495 26.5422 3.64004 25.35 3.7853C26.5675 3.03827 27.5017 1.85374 27.9418 0.442688C26.8019 1.13438 25.5422 1.63758 24.1965 1.90734C23.1241 0.733193 21.5912 0 19.8948 0C16.6419 0 14.0029 2.70625 14.0029 6.04367C14.0029 6.51748 14.0534 6.97746 14.1546 7.42015C9.25592 7.16768 4.9137 4.76404 2.00483 1.10325C1.49726 1.99899 1.20721 3.03827 1.20721 4.14498C1.20721 6.24081 2.24766 8.09109 3.82941 9.17532C2.86485 9.14592 1.95424 8.87097 1.15831 8.42137V8.49572C1.15831 11.425 3.1903 13.8685 5.88838 14.4218C5.39429 14.5636 4.87323 14.6345 4.3353 14.6345C3.95588 14.6345 3.5849 14.5982 3.22571 14.5273C3.97612 16.9275 6.15144 18.6757 8.73148 18.7224C6.71466 20.3444 4.17173 21.3111 1.41125 21.3111C0.935715 21.3111 0.465242 21.2834 0.00488281 21.2281C2.61359 22.94 5.71301 23.9412 9.04008 23.9412C19.883 23.9412 25.8103 14.7331 25.8103 6.74574C25.8103 6.4829 25.8053 6.22005 25.7951 5.9624C26.9469 5.10988 27.9469 4.04641 28.7344 2.83422Z"
+                      fill="#00AAEC"
+                    />
+                  </svg>
+                </a>
+              </Link>
+              <Link href="http://discord.com">
+                <a>
+                  <svg
+                    width="34"
+                    height="24"
+                    viewBox="0 0 34 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M28.7112 2.016C26.5599 1.072 24.2752 0.383997 21.8904 0C21.5902 0.496004 21.2566 1.16799 21.0232 1.696C18.4867 1.34399 15.9685 1.34399 13.467 1.696C13.2335 1.16799 12.8832 0.496004 12.5997 0C10.1983 0.383997 7.91361 1.072 5.77733 2.016C1.45807 8.12797 0.290699 14.0959 0.874384 19.9839C3.74277 21.9839 6.51113 23.2 9.23111 24C9.89817 23.136 10.4985 22.2079 11.0155 21.232C10.0316 20.88 9.0977 20.4479 8.19715 19.9359C8.43063 19.776 8.66411 19.6 8.88091 19.424C14.3175 21.808 20.2061 21.808 25.5759 19.424C25.8094 19.6 26.0262 19.776 26.2597 19.9359C25.3591 20.4479 24.4253 20.88 23.4413 21.232C23.9583 22.2079 24.5587 23.136 25.2257 24C27.944 23.2 30.729 21.9839 33.5824 19.9839C34.2994 13.168 32.4467 7.24803 28.7112 2.016ZM11.766 16.3519C10.1316 16.3519 8.79749 14.928 8.79749 13.184C8.79749 11.44 10.0983 10.016 11.766 10.016C13.4169 10.016 14.7677 11.44 14.7343 13.184C14.7343 14.928 13.4169 16.3519 11.766 16.3519ZM22.7243 16.3519C21.0899 16.3519 19.7541 14.928 19.7541 13.184C19.7541 11.44 21.0565 10.016 22.7243 10.016C24.3752 10.016 25.726 11.44 25.6926 13.184C25.6926 14.928 24.3919 16.3519 22.7243 16.3519Z"
+                      fill="#5865F2"
+                    />
+                  </svg>
+                </a>
+              </Link>
+            </HStack>
+          </Flex>
+        </Box>
+        
       </Flex>
-    </Flex>
-    // </HStack>
+    </Container>
   );
-}
+};
 
-export default Footer
+export default Footer;
