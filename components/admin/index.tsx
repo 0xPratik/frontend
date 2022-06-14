@@ -1,4 +1,12 @@
-import { Box, Flex, Stack, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
+  Flex,
+  Stack,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
 import Navbar from "./Navbar";
 import SideBar from "./SideBar";
@@ -11,11 +19,12 @@ function AdminHome({}: Props) {
       style={{
         backgroundColor: "#151515",
       }}
-    > 
-      <Stack   direction={"row"}>
-        <Stack>
+    >
+      <Stack direction={"row"}>
+        <Stack display={{ base: "none", xl: "block" }}>
           <SideBar />
         </Stack>
+
         <Stack w="100%" margin={0} direction={"column"}>
           <Box>
             <Navbar />

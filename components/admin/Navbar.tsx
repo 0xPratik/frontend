@@ -1,6 +1,9 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
+  Box,
   Button,
+  Collapse,
+  Flex,
   Heading,
   HStack,
   IconButton,
@@ -8,17 +11,23 @@ import {
   Input,
   InputGroup,
   InputLeftElement,
+  Spacer,
+  Stack,
+  useDisclosure,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import Logo from "../common/Logo";
+import LogoSM from "../common/LogoSM";
 
 type Props = {};
-
-function Navbar({}: Props) {
+const DeskTopNavbar = (props: Props) => {
   return (
-    <HStack
+    <Flex
+      display={{ base: "none", xl: "flex" }}
       justifyContent="space-between"
       px={[0, 10, 30]}
+      align={"center"}
       paddingTop="1rem"
       paddingBottom="0.5rem"
     >
@@ -49,7 +58,8 @@ function Navbar({}: Props) {
         </InputGroup>
 
         <IconButton
-          bg={"transparent"}
+                  bg={"transparent"}
+                  outline={"1px solid #FFFFFF"}
           aria-label="Notification"
           icon={<Image src="/assets/admin/bell.svg" />}
         />
@@ -69,7 +79,48 @@ function Navbar({}: Props) {
           New Product
         </Button>
       </HStack>
-    </HStack>
+    </Flex>
+  );
+};
+const MobileNavbar = (props: Props) => {
+  const { isOpen, onToggle } = useDisclosure();
+  return (
+    <Flex direction={"row"} justifyContent="space-between" p={4}>
+      <LogoSM />
+
+      <HStack spacing={5}>
+        <IconButton
+          outline={"0.5px solid #FFFFFF"}
+          aria-label={"search"}
+          size={"xs"}
+          icon={<Image src="/assets/admin/search.svg" />}
+        />
+        <IconButton
+          outline={"0.5px solid #FFFFFF"}
+          size={"xs"}
+          icon={<Image src="/assets/admin/bell.svg" />}
+          aria-label={"bell"}
+        />
+        <IconButton
+          outline={"0.5px solid #FFFFFF"}
+          size={"xs"}
+          icon={<Image src="/assets/admin/hamberger.svg" />}
+          aria-label={"hamberger"}
+        />
+      </HStack>
+    </Flex>
+  );
+};
+function Navbar({}: Props) {
+  return (
+    <>
+      <Box>
+        <DeskTopNavbar />
+      </Box>
+      <Box display={{ xl: "none" }}>
+        <MobileNavbar />
+      </Box>
+    </>
   );
 }
 

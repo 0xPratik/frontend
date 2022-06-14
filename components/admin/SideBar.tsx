@@ -86,7 +86,7 @@ const SideBar = (props: Props) => {
             </Box>
           </HStack>
         </Box>
-        <Spacer />
+
         <VStack py={6} spacing={6}>
           {SideBarItems.map((item, index) => {
             return (
@@ -112,6 +112,21 @@ const SideBar = (props: Props) => {
             );
           })}
         </VStack>
+        <Spacer />
+        <Box  w={"246px"} borderRadius={200} bg={"transparent"}>
+          <HStack
+            paddingLeft={"8"}
+            display={"flex"}
+            h={"64px"}
+            alignItems="center"
+            spacing={4}
+          >
+            <Image src={"/assets/admin/logout.svg"} />
+            <Heading fontWeight={500} fontSize="1.125rem">
+              Log out
+            </Heading>
+          </HStack>
+        </Box>
       </VStack>
     </Box>
   );
