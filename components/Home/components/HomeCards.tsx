@@ -26,7 +26,7 @@ const Card = (props: CardProps) => {
       <VStack
         bg={`${props.color}`}
         color="#000000"
-        py={[10,20]}
+        py={[10, 20]}
         boxShadow="lg"
         m="4"
         borderRadius="xl"
@@ -50,7 +50,7 @@ const HomeCards = (props: Props) => {
         Super packed with features just for you
       </Heading>
       <Container maxW={"container.xl"} padding={0}>
-        <SimpleGrid columns={2} columnGap={10} rowGap={[2,10]} w="full">
+        <SimpleGrid columns={2} columnGap={10} rowGap={[2, 10]} w="full">
           <Card
             heading={"Token Gated Exclusive Products and Discounts"}
             description={
@@ -97,18 +97,18 @@ const HomeCards = (props: Props) => {
             textColor={"#593E15"}
           />
           <Card
-            heading={"On-chain refunds for items which are not Dispatched"}
+            heading={"On-chain refunds"}
             description={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci aliquet diam, viverra porttitor ut. Pharetra, id urna, in non ullamcorper. Orci aenean."
+              "Get your Tokens back if the merchant did you send you the correct order"
             }
             image={"/assets/cardicon/Group 27.svg"}
             color={"#72FFE6"}
             textColor={"#3E500C"}
           />
           <Card
-            heading={"Composable Merchant Dashboard"}
+            heading={"Composable Dashboard"}
             description={
-              "we are going to offer a dashboard which can be used to manage your store and your products with all the web3 features that you would like to add or remove."
+              "Get an Admin Dashboard in which you can easily add or remove your products and manage your store"
             }
             image={"/assets/cardicon/Group 28.svg"}
             color={"#72FFE6"}

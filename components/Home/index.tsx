@@ -1,11 +1,12 @@
-import { Container, Heading } from '@chakra-ui/react';
-import React from 'react'
-import Footer from './components/Footer';
-import Hero from './components/Hero';
-import HomeCards from './components/HomeCards';
-import Navbar from './components/Navbar';
+import { Container, Heading } from "@chakra-ui/react";
+import React from "react";
+import Footer from "./components/Footer";
+import Hero from "./components/Hero";
+import HomeCards from "./components/HomeCards";
+import Navbar from "./components/Navbar";
+import CTA from "./components/Cta";
 
-type Props = {}
+type Props = {};
 
 const index = (props: Props) => {
   return (
@@ -13,9 +14,10 @@ const index = (props: Props) => {
       <Navbar />
       <Hero />
       <HomeCards />
-      <Footer/>
+      <CTA />
+      <Footer />
     </Container>
   );
-}
+};
 
 export default index;
