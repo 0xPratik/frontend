@@ -1,17 +1,8 @@
-import { Container } from '@chakra-ui/react';
-import React from 'react'
-import CardView from './components/CardView'
-import Navbar from './components/Navbar';
+import React from "react";
+import StorePage from "../../components/store/";
 
-type Props = {}
-
-const index = (props: Props) => {
-  return (
-    <div>
-      <Navbar/>
-      <CardView />
-    </div>
-  );
+function Index() {
+  return <StorePage />;
 }
 
-export default index
+export default Index;
