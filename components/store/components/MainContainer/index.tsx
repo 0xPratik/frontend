@@ -14,6 +14,8 @@ function MainContainer({ children }: IMainContainer) {
       mx={20}
       my={20}
       color="white"
+      maxW="100vw"
+      wrap={"wrap"}
     >
       {children}
     </VStack>

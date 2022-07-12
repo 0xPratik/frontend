@@ -22,12 +22,12 @@ import {
 import Logo from "../../../common/Logo";
 
 export default function WithSubnavigation() {
-  const { isOpen, onToggle } = useDisclosure();
-
   return (
-    <Box w="100vw">
+    <Box>
       <Flex
         bg={"#181717"}
+        borderBottom="1px"
+        borderColor={"#515151"}
         color={"white"}
         minH={"74px"}
         py={{ base: 2 }}

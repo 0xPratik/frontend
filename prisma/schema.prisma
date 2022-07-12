@@ -7,9 +7,15 @@ generator client {
 
 }
 
+// datasource db {
+//   provider             = "mysql"
+//   url                  = env("DATABASE_URL")
+//   referentialIntegrity = "prisma"
+// }
+
 datasource db {
-  provider             = "mysql"
-  url                  = env("DATABASE_URL")
+  provider             = "sqlite"
+  url                  = "file:./dev.db"
   referentialIntegrity = "prisma"
 }
 

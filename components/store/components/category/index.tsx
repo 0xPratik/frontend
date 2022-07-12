@@ -23,7 +23,9 @@ function CategoryTabs() {
           return (
             <Tab
               bg="#313131"
-              borderRadius={"3xl"}
+              borderRadius={"full"}
+              px={4}
+              py={2}
               mr={4}
               border="1px"
               borderColor={"#313131"}
