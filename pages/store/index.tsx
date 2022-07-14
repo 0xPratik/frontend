@@ -1,8 +1,13 @@
 import React from "react";
 import StorePage from "../../components/store/";
+import StoreLayout from "../../layout/StoreLayout";
 
 function Index() {
-  return <StorePage />;
+  return (
+    <StoreLayout>
+      <StorePage />
+    </StoreLayout>
+  );
 }
 
 export default Index;
