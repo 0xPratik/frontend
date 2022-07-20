@@ -16,11 +16,14 @@ import BellIcon from "../../Icons/Bell";
 import CartIcon from "../../Icons/Cart";
 import WalletIcon from "../../Icons/Wallet";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 export default function WithSubnavigation() {
   const { wallets, select, connected, publicKey } = useWallet();
-
+  const { data: session } = useSession();
+  console.log(session);
   return (
     <Box>
       <Flex
@@ -47,23 +50,6 @@ export default function WithSubnavigation() {
               <CartIcon />
             </Circle>
             <Menu>
-              {/* <MenuButton as={"div"}>
-                <Box
-                  cursor="pointer"
-                  display={"flex"}
-                  alignItems={"center"}
-                  _hover={{ background: "white", color: "teal.500" }}
-                  justifyContent="center"
-                  py="14.5px"
-                  px="25.5px"
-                  border="1px"
-                  borderColor={"white"}
-                  borderRadius={"full"}
-                >
-                  <WalletIcon width="20px" />
-                  <Text pl="12px">Connect Wallet</Text>
-                </Box>
-              </MenuButton> */}
               <MenuButton
                 color="white"
                 bg="#181717"
@@ -84,12 +70,7 @@ export default function WithSubnavigation() {
                   return (
                     <MenuItem
                       onClick={() => {
-                        console.log("CLICK");
-                        console.log(wallet.readyState);
-                        console.log("Wallet Name", wallet.adapter.name);
                         select(wallet.adapter.name);
-                        console.log("CONNECTEd", connected);
-                        console.log("User", publicKey?.toString());
                       }}
                       key={index}
                     >
@@ -107,6 +88,10 @@ export default function WithSubnavigation() {
                 })}
               </MenuList>
             </Menu>
+            <WalletMultiButton />
+            <Button colorScheme={"red"} onClick={() => signIn()}>
+              Sign in
+            </Button>
           </HStack>
         </Box>
       </Flex>

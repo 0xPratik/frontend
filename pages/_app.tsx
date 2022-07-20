@@ -12,6 +12,9 @@ import { useMemo } from "react";
 import { clusterApiUrl } from "@solana/web3.js";
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 import { WalletProvider } from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { SessionProvider } from "next-auth/react";
+require("@solana/wallet-adapter-react-ui/styles.css");
 import theme from "../theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -28,11 +31,15 @@ function MyApp({ Component, pageProps }: AppProps) {
     [network]
   );
   return (
-    <WalletProvider wallets={wallets}>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
-    </WalletProvider>
+    <SessionProvider session={pageProps.session}>
+      <WalletProvider wallets={wallets}>
+        <WalletModalProvider>
+          <ChakraProvider theme={theme}>
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </WalletModalProvider>
+      </WalletProvider>
+    </SessionProvider>
   );
 }
 
