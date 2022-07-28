@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Flex,
@@ -11,6 +11,9 @@ import {
   Button,
   HStack,
   Circle,
+  LinkBox,
+  LinkOverlay,
+  Select,
 } from "@chakra-ui/react";
 import {
   Menu,
@@ -22,21 +25,40 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from "@chakra-ui/react";
+import Cart from "../store/Icons/Cart";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import Lock from "../../components/store/Icons/Lock";
+import { Product } from "@prisma/client";
+import axios from "axios";
+import { useAxios, Methods } from "../../hooks/useAxios";
+import ConnectWallet from "../store/components/ConnecWallet";
+import { useWallet } from "@solana/wallet-adapter-react";
 
-function ProductDetailsPage() {
+import { useRouter } from "next/router";
+
+import BackButton from "./components/BackButton";
+import { useCart } from "../../store/cartStore";
+
+type ProductDetailsPageProps = {
+  product: Product;
+};
+
+function ProductDetailsPage({ product }: ProductDetailsPageProps) {
+  const router = useRouter();
+  const addToCart = useCart((state) => state.addToCart);
+  const cartItems = useCart((state) => state.cart);
+  const { connected } = useWallet();
+  console.log("IS CONNECTED", connected);
+  console.log("CART ITEMS", cartItems);
+
   return (
     <Box py={8} px={16} bg="#1f1f1f">
       <VStack spacing={8} alignItems={"flex-start"}>
-        <Circle size="40px" color="white" border="1px" borderColor={"white"}>
-          <ArrowBackIcon />
-        </Circle>
+        <BackButton />
+
         <SimpleGrid w="100%" columns={2} spacing={8}>
           <Box
-            backgroundImage={
-              "https://i0.wp.com/bangla.indiarag.com/wp-content/uploads/2019/01/dummy-product.png?ssl=1"
-            }
+            backgroundImage={product?.image}
             border="1px"
             borderTopLeftRadius={"xl"}
             borderTopRightRadius={"xl"}
@@ -70,7 +92,7 @@ function ProductDetailsPage() {
           </Box>
           <Box color="white">
             <VStack align={"flex-start"}>
-              <Heading py={"10px"}>Product Name here</Heading>
+              <Heading py={"10px"}>{product?.title}</Heading>
               <HStack spacing={2}>
                 <Box
                   display={"flex"}
@@ -78,11 +100,10 @@ function ProductDetailsPage() {
                   justifyContent={"center"}
                   borderRadius={"full"}
                   bg="#E1FFE8"
-                  color="#2F8944"
                   px={"13px"}
                   py={"6.5px"}
                 >
-                  <Text fontWeight={"medium"} fontSize="14px">
+                  <Text fontWeight={"medium"} color="#2F8944" fontSize="14px">
                     Category
                   </Text>
                 </Box>
@@ -96,23 +117,18 @@ function ProductDetailsPage() {
                   px={"13px"}
                   py={"6.5px"}
                 >
-                  <Text fontWeight={"medium"} fontSize="14px">
+                  <Text fontWeight={"medium"} color="#D71414" fontSize="14px">
                     10 available in stock
                   </Text>
                 </Box>
               </HStack>
               <Box pt={9}>
-                <Text fontSize={"16px"}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Vestibulum risus enim arcu quis urna faucibus. Orci non in
-                  scelerisque nibh eget tristique laoreet imperdiet. Egestas
-                  fames vitae vestibulum habitasse non congue.
-                </Text>
+                <Text fontSize={"16px"}>{product?.desc}</Text>
               </Box>
               <Box pt={4} pb={20}>
                 <Heading size="lg" color="#FFA7D2">
                   {" "}
-                  SOL 0.04
+                  USDC {product?.price}
                 </Heading>
               </Box>
               <HStack
@@ -134,22 +150,34 @@ function ProductDetailsPage() {
               </Box>
               <HStack w="100%" align={"center"} justify="space-between">
                 <Box color="white" bg="black">
-                  <Menu>
-                    <MenuButton bg="blackAlpha.100" as={Button}>
-                      1
-                    </MenuButton>
-                    <MenuList>
-                      <MenuItem>2</MenuItem>
-                      <MenuItem>3</MenuItem>
-                      <MenuItem>4</MenuItem>
-                      <MenuItem>5</MenuItem>
-                    </MenuList>
-                  </Menu>
+                  <Select
+                    color={"white"}
+                    w="80px"
+                    variant="filled"
+                    placeholder="1"
+                    bg="#2E2E2E"
+                  >
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </Select>
                 </Box>
                 <Box>
-                  <Button colorScheme={"purple"} variant="solid">
-                    Connect Wallet
-                  </Button>
+                  {connected ? (
+                    <Button
+                      onClick={() => addToCart(product)}
+                      leftIcon={<Cart />}
+                      borderColor={"#F23090"}
+                      bg="#FFF4F9"
+                      color="#F23090"
+                      border="1px"
+                      borderRadius={"full"}
+                    >
+                      Add to Cart
+                    </Button>
+                  ) : (
+                    <ConnectWallet />
+                  )}
                 </Box>
               </HStack>
             </VStack>

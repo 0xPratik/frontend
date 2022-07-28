@@ -2,7 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["commons.wikimedia.org"],
+    domains: ["https://fakestoreapi.com", "fakestoreapi.com"],
+  },
+  compiler: {
+    removeConsole: true,
   },
 };
 

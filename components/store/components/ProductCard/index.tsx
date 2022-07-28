@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Heading,
@@ -8,25 +8,63 @@ import {
   VStack,
   HStack,
   Button,
+  LinkOverlay,
+  LinkBox,
+  Link,
+  Flex,
 } from "@chakra-ui/react";
 import Cart from "../Cart";
+import { Category, Product } from "@prisma/client";
+import { useState } from "react";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { useCart } from "../../../../store/cartStore";
+import GatedChip from "../GatedChip";
+import CategoryChip from "../CategoryChip";
 
-function ProjectCard() {
+type ProjectCardProps = {
+  product: Product;
+};
+
+function ProjectCard({ product }: ProjectCardProps) {
+  const [margin, setMargin] = useState<boolean>(false);
+  const router = useRouter();
+  const cartItems = useCart((state) => state.cart);
+  const addToCart = useCart((state) => state.addToCart);
+
+  console.log("ITEMS IN THE CART ARE", cartItems);
+
+  const checkLength = () => {
+    if (product.title.length <= 27) {
+      return true;
+    }
+    return false;
+  };
+
+  useEffect(() => {
+    const len = checkLength();
+    setMargin(len);
+  }, [margin]);
+
+  console.log("PRODUCTCARD ::THE ID  is", product.id);
   return (
-    <VStack border="1px" borderColor={"#313131"} borderRadius="xl">
+    // <NextLink href={`store/${props.id}`}>
+    //   <LinkOverlay>
+    <VStack maxW={80} border="1px" borderColor={"#313131"} borderRadius="xl">
       <Box
-        backgroundImage={
-          "https://i0.wp.com/bangla.indiarag.com/wp-content/uploads/2019/01/dummy-product.png?ssl=1"
-        }
+        backgroundImage={product.image}
         border="1px"
+        position={"relative"}
         borderTopLeftRadius={"xl"}
         borderTopRightRadius={"xl"}
         borderColor={"#313131"}
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
-        bgSize="cover"
+        bgSize="contain"
+        objectFit={"contain"}
         w="full"
-        h="250px"
+        h="220px"
+        maxH={"220px"}
         display="flex"
         justifyContent="space-between"
         alignItems={"flex-start"}
@@ -34,54 +72,56 @@ function ProjectCard() {
         pl={4}
         pt={3}
       >
-        <Box
-          display={"flex"}
-          alignItems="center"
-          justifyContent={"center"}
-          borderRadius={"full"}
-          bg="#092F90"
-          color="white"
-          px={3}
-          py={2}
-        >
-          <Text fontWeight={"medium"} fontSize="12px">
-            Token Gated - Limited
-          </Text>
-        </Box>
+        <GatedChip name="Token Gated" />
       </Box>
+
       <VStack px={4} align="flex-start">
-        <Heading fontSize={"18px"} as="h1">
-          Product Name
-        </Heading>
-        <HStack spacing={2}>
-          <Box
-            display={"flex"}
-            alignItems="center"
-            justifyContent={"center"}
-            px={3}
-            py={1}
-            bg="#D2D2D2"
-            borderRadius="full"
+        <NextLink href={`store/${product.id}`} passHref>
+          <Link
+            _active={{
+              border: "none",
+            }}
+            _activeLink={{
+              border: "none",
+            }}
           >
-            <Text fontWeight={"400"} fontSize="12px" color={"#4B4B4B"}>
-              Category
-            </Text>
-          </Box>
-          <Box
-            display={"flex"}
-            alignItems="center"
-            justifyContent={"center"}
-            px={3}
-            py={1}
-            bg="#DAE4FF"
-            borderRadius="full"
-          >
-            <Text fontWeight={"400"} fontSize="12px" color={"#092F90"}>
-              5 available in Stock
-            </Text>
-          </Box>
-        </HStack>
-        <Text pb={3}>This is the Desc of the Product i have to write</Text>
+            <Heading
+              fontSize={"18px"}
+              paddingBottom={margin ? "18px" : "0px"}
+              as="h1"
+            >
+              {product.title.slice(0, 46)}
+            </Heading>
+            <Flex
+              maxH={8}
+              my={2}
+              maxW={"250px"}
+              overflowX={"auto"}
+              whiteSpace="nowrap"
+              wrap={"nowrap"}
+              _first={{
+                marginLeft: 0,
+              }}
+              _last={{
+                marginRight: 0,
+              }}
+              sx={{
+                "::-webkit-scrollbar": {
+                  display: "none",
+                },
+              }}
+              align="center"
+            >
+              <CategoryChip name="T-Shirt" bg="#D2D2D2" color="#4B4B4B" />
+              <CategoryChip
+                name=" 5 available in Stock"
+                bg="#DAE4FF"
+                color="#092F90"
+              />
+            </Flex>
+            <Text pb={3}>{product.desc.slice(0, 55)}...</Text>
+          </Link>
+        </NextLink>
         <HStack
           w="100%"
           pb={4}
@@ -90,16 +130,18 @@ function ProjectCard() {
         >
           <Box>
             <Text color="#FFA7D2" fontSize={"16px"} fontWeight="500">
-              USDC 0.2
+              USDC {product.price}
             </Text>
           </Box>
           <Box>
             <Button
+              onClick={() => addToCart(product)}
               leftIcon={<Cart />}
               borderColor={"#F23090"}
               bg="#FFF4F9"
               color="#F23090"
               border="1px"
+              borderRadius={"full"}
             >
               Add to Cart
             </Button>
@@ -107,6 +149,8 @@ function ProjectCard() {
         </HStack>
       </VStack>
     </VStack>
+    //   </LinkOverlay>
+    // </NextLink>
   );
 }
 

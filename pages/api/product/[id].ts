@@ -10,13 +10,13 @@ router
   .get(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const { id } = req.query;
-      console.log(id);
+      console.log("ID Got in Server", id);
       if (id === null || id === undefined) {
         return res.status(400).send("NULL ID");
       }
       const product = await prisma.product.findUnique({
         where: {
-          id: parseInt(id as string),
+          id: id as string,
         },
         select: {
           image: true,
@@ -25,7 +25,9 @@ router
           desc: true,
         },
       });
-      res.status(200).json(product);
+
+      console.log("THE PRODUCT SERVER", product);
+      return res.status(200).json(product);
     } catch (error) {
       console.log("Product Error", error);
       res.status(400).send(error);
@@ -38,7 +40,7 @@ router
       const { id } = req.query;
       const product = await prisma.product.update({
         where: {
-          id: parseInt(id as string),
+          id: id as string,
         },
         data: {
           title: title,

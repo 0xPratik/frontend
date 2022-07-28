@@ -1,29 +1,34 @@
 import {
   Box,
   Flex,
-  Text,
   HStack,
   Circle,
-  Menu,
-  MenuButton,
-  MenuList,
-  Button,
-  MenuItem,
+  LinkOverlay,
+  LinkBox,
 } from "@chakra-ui/react";
 import Logo from "../../../common/Logo";
 import DillIcon from "../../Icons/Dill";
 import BellIcon from "../../Icons/Bell";
 import CartIcon from "../../Icons/Cart";
-import WalletIcon from "../../Icons/Wallet";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useSession, signIn, signOut } from "next-auth/react";
-import Image from "next/image";
+import ConnectWallet from "../ConnecWallet";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { useCart } from "../../../../store/cartStore";
+import { useState, useEffect } from "react";
 
 export default function WithSubnavigation() {
-  const { wallets, select, connected, publicKey } = useWallet();
+  const { wallets, select, connected, publicKey, wallet } = useWallet();
+  const [cartLength, setCartLength] = useState<number>(0);
+  const CartItems = useCart((state) => state.cart);
+  const router = useRouter();
   const { data: session } = useSession();
-  console.log(session);
+
+  useEffect(() => {
+    setCartLength(CartItems.length);
+  }, [cartLength, CartItems]);
+
   return (
     <Box>
       <Flex
@@ -37,61 +42,62 @@ export default function WithSubnavigation() {
         align={"center"}
         justify={"space-between"}
       >
-        <Logo />
+        <LinkBox>
+          <NextLink href="/store" passHref>
+            <LinkOverlay>
+              <Logo />
+            </LinkOverlay>
+          </NextLink>
+        </LinkBox>
         <Box>
           <HStack spacing={"32px"}>
-            <Circle size="40px" border="1px" borderColor={"white"}>
+            <Circle
+              size="40px"
+              border="1px"
+              borderColor={"white"}
+              _hover={{
+                bg: "#313131 ",
+                cursor: "pointer",
+              }}
+            >
               <BellIcon />
             </Circle>
-            <Circle size="40px" border="1px" borderColor={"white"}>
+            <Circle
+              size="40px"
+              border="1px"
+              borderColor={"white"}
+              _hover={{
+                bg: "#313131 ",
+                cursor: "pointer",
+              }}
+            >
               <DillIcon />
             </Circle>
-            <Circle size="40px" border="1px" borderColor={"white"}>
+            <Circle
+              position={"relative"}
+              size="40px"
+              border="1px"
+              onClick={() => router.push("/store/cart")}
+              borderColor={"white"}
+              _hover={{
+                bg: "#313131 ",
+                cursor: "pointer",
+              }}
+            >
               <CartIcon />
-            </Circle>
-            <Menu>
-              <MenuButton
-                color="white"
-                bg="#181717"
-                border="1px"
-                _hover={{ bg: "#C12020" }}
-                _expanded={{ bg: "blue.400" }}
-                _focus={{ boxShadow: "outline" }}
-                borderColor={"white"}
-                px={"20.5px"}
-                py={"20.5px"}
-                as={Button}
-                leftIcon={<WalletIcon width="20px" />}
+              <Circle
+                position={"absolute"}
+                right={0}
+                top={0}
+                transform="translate(8px,-7px)"
+                size={5}
+                bg="#FFDEEE"
+                color="#D6096E"
               >
-                Connect Wallet
-              </MenuButton>
-              <MenuList color="blackAlpha.800">
-                {wallets.map((wallet: Wallet, index) => {
-                  return (
-                    <MenuItem
-                      onClick={() => {
-                        select(wallet.adapter.name);
-                      }}
-                      key={index}
-                    >
-                      <Flex>
-                        <Image
-                          width="24px"
-                          height="24px"
-                          src={wallet.adapter.icon}
-                          alt={`${wallet.adapter.name} Icon`}
-                        />
-                        <Text ml={2}>{wallet.adapter.name}</Text>
-                      </Flex>
-                    </MenuItem>
-                  );
-                })}
-              </MenuList>
-            </Menu>
-            <WalletMultiButton />
-            <Button colorScheme={"red"} onClick={() => signIn()}>
-              Sign in
-            </Button>
+                {cartLength}
+              </Circle>
+            </Circle>
+            <ConnectWallet />
           </HStack>
         </Box>
       </Flex>

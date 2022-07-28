@@ -5,13 +5,18 @@ import MainContainer from "./components/MainContainer";
 import Category from "./components/category";
 import ProductContainer from "./components/ProductContainer";
 import Footer from "../Home/components/Footer";
+import { Product } from "@prisma/client";
 
-function StorePage() {
+type StorePageProps = {
+  products: Product[];
+};
+
+function StorePage({ products }: StorePageProps) {
   return (
     <MainContainer>
       <Heading>Explore</Heading>
       <Category />
-      <ProductContainer />
+      <ProductContainer products={products} />
     </MainContainer>
   );
 }

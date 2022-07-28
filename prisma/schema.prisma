@@ -4,7 +4,6 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
-
 }
 
 // datasource db {
@@ -20,79 +19,118 @@ datasource db {
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  email         String?   @unique
-  name          String
-  image         String?
-  emailVerified DateTime?
-  address       Address?
-  payments      Payment[]
-  orders        Order[]
-  Account       Account[]
-  Session       Session[]
+  id        String    @id @default(cuid())
+  pubkey    String    @unique @default("9iSD3wkC1aq3FcwgjJfEua9FkkZJWv7Cuxs6sKjc3VnR")
+  address   Address?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  payments  Payment[]
+  orders    Order[]
+  Cart      Cart?
+  Session   Session[]
+}
+
+model Admin {
+  id        String    @id @default(cuid())
+  email     String?   @unique
+  name      String
+  image     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  Account   Account[]
+  Session   Session[]
 }
 
 model Address {
-  id          Int    @id @default(autoincrement())
+  id          String   @id @default(cuid())
   city        String
   country     String
   postal_code Int
   suite       String
   phone_no    String
-  user        User   @relation(fields: [userId], references: [id])
-  userId      Int    @unique
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
 
   @@index([userId])
 }
 
+model TokenGated {
+  id       String    @id @default(cuid())
+  token    String    @unique
+  discount Int
+  uses     Int
+  Product  Product[]
+}
+
 model Product {
-  id       Int        @id @default(autoincrement())
-  title    String
-  desc     String
-  price    Int
-  image    String
-  Order    Order?     @relation(fields: [orderId], references: [id])
-  orderId  Int?
-  category Category[]
+  id             String      @id @unique @default(cuid())
+  title          String
+  desc           String
+  price          Float
+  image          String
+  totalInventory Int         @default(0)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @default(now()) @updatedAt
+  Order          Order?      @relation(fields: [orderId], references: [id])
+  orderId        String?
+  category       Category?   @relation(fields: [categoryId], references: [id])
+  categoryId     String?
+  isGated        TokenGated? @relation(fields: [tokenGatedId], references: [id])
+  tokenGatedId   String?
+  Cart           Cart?       @relation(fields: [cartId], references: [id])
+  cartId         String?
 
   @@index([orderId])
 }
 
-model Category {
-  id        Int      @id @default(autoincrement())
-  name      String
-  Product   Product? @relation(fields: [productId], references: [id])
-  productId Int?
+model Cart {
+  id        String    @id @default(cuid())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  Product   Product[]
+}
 
-  @@index([productId])
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+  Product   Product[]
 }
 
 model Order {
-  id        Int       @id @default(autoincrement())
-  orderDate DateTime
+  id        String    @id @default(cuid())
   products  Product[]
   payment   Payment?
   User      User?     @relation(fields: [userId], references: [id])
-  userId    Int?
+  userId    String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
 
   @@index([userId])
 }
 
 model Payment {
-  id      Int    @id @default(autoincrement())
-  amount  Int
-  txSig   String
-  order   Order  @relation(fields: [orderId], references: [id])
-  orderId Int    @unique
-  User    User?  @relation(fields: [userId], references: [id])
-  userId  Int?
+  id        String   @id @default(cuid())
+  amount    Int
+  txSig     String
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   String   @unique
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@index([userId])
 }
 
 model Account {
   id                String  @id @default(cuid())
-  userId            Int
+  userId            String
   type              String
   provider          String
   providerAccountId String
@@ -103,8 +141,8 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Admin             Admin?  @relation(fields: [adminId], references: [id])
+  adminId           String?
 
   @@unique([provider, providerAccountId])
 }
@@ -112,9 +150,11 @@ model Account {
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       Int
+  userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Admin        Admin?   @relation(fields: [adminId], references: [id])
+  adminId      String?
 }
 
 model VerificationToken {

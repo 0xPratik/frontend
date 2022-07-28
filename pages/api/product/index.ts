@@ -9,7 +9,20 @@ router
   // Gets all the Products
   .get(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const products = await prisma.product.findMany();
+      const products = await prisma.product.findMany({
+        select: {
+          category: {
+            select: {
+              name: true,
+            },
+          },
+          desc: true,
+          image: true,
+          price: true,
+          title: true,
+          id: true,
+        },
+      });
       res.status(200).json(products);
     } catch (error) {
       console.log("Product Error", error);
@@ -45,6 +58,7 @@ router
       return res.status(200).send(product);
     } catch (error) {
       console.log("Product Error", error);
+      return res.status(400).send(error);
     }
   });
 
