@@ -7,6 +7,7 @@ import { GetStaticPaths, NextPage, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import { Product } from "@prisma/client";
 import prisma from "../../db/index";
+import { server } from "../../config";
 
 interface IParams extends ParsedUrlQuery {
   id: string;
@@ -25,7 +26,7 @@ const ProductPage = ({ product }: ProductPageprops) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get("http://localhost:3000/api/product");
+  const res = await axios.get(`${server}/api/product`);
   // console.log("RESPONSE FROM getStaticPaths", res);
   const products: Product[] = res.data;
   console.log("STATIC PATH PRPDUCT", products);
@@ -47,7 +48,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   if (context.params !== undefined) {
     const id = context.params as IParams;
     console.log("THE ID IN getStaticProps is", id);
-    const res = await axios.get(`http://localhost:3000/api/product/${id.id}`);
+    const res = await axios.get(`${server}/api/product/${id.id}`);
+    console.log("THIS IS THE RES", res);
     console.log("RESPONSE", res);
     product = res.data;
   }

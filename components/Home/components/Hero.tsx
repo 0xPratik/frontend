@@ -36,13 +36,21 @@ const Hero = (props: Props) => {
           fontWeight="400"
           lineHeight="36px"
         >
-          Spin up your E-commerce Web3 Store with awesome features. Make sure to register yourselves for the launch. 
+          Spin up your E-commerce Web3 Store with awesome features. Make sure to
+          register yourselves for the launch.
         </Text>
         <HStack>
-          <Button size={"xl"} variant={"filled"} mr={4}>
+          <Button size={"xl"} bg="white" color="black" mr={4}>
             Register Now
           </Button>
-          <Button size={"xl"} variant={"outlined"}>
+          <Button
+            size={"xl"}
+            bg="black"
+            color="white"
+            border="1px"
+            borderColor={"white"}
+            variant={"outlined"}
+          >
             Contact us
           </Button>
         </HStack>

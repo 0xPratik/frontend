@@ -32,6 +32,7 @@
     "next": "12.1.6",
     "next-auth": "^4.10.0",
     "next-connect": "^1.0.0-next.2",
+    "nodemailer": "^6.7.7",
     "querystring": "^0.2.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
@@ -41,6 +42,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.35",
+    "@types/nodemailer": "^6.4.4",
     "@types/react": "18.0.9",
     "@types/react-dom": "18.0.4",
     "eslint": "8.16.0",

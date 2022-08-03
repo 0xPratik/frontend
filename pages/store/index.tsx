@@ -6,6 +6,7 @@ import { GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import axios from "axios";
 import { Product } from "@prisma/client";
+import { server } from "../../config/index";
 
 interface IParams extends ParsedUrlQuery {
   id: string;
@@ -24,7 +25,8 @@ const MainStorePage = ({ products }: MainPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await axios.get(`http://localhost:3000/api/product`);
+  const res = await axios.get(`${server}/api/product`);
+  console.log(res);
   const products = res.data;
 
   if (!products) {

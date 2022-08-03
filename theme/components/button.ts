@@ -41,6 +41,11 @@ const Button: ComponentStyleConfig = {
       px: 6, // <-- these values are tokens from the design system
       py: 4, // <-- these values are tokens from the design system
     },
+    xl: {
+      fontSize: "xl",
+      px: 12,
+      py: 5,
+    },
   },
   // Two variants: outline and solid
   variants: {
@@ -66,8 +71,20 @@ const Button: ComponentStyleConfig = {
       color: "purple.500",
     },
     solid: {
-      bg: "#FFF4F9",
-      color: "#F23090",
+      bg: "#2E2E2E",
+      borderRadius: "none",
+      color: "#CFCFCF",
+      border: "none",
+      rounded: "5px",
+      _hover: {
+        bg: "#2E2E2E",
+      },
+      _active: {
+        bg: "#2E2E2E",
+      },
+      _focus: {
+        bg: "#2E2E2E",
+      },
     },
   },
   // The default size and variant values

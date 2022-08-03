@@ -49,7 +49,7 @@ function AddressForm() {
         <Box>
           <FormControl>
             <FormLabel>Street address</FormLabel>
-            <Input type="text" />
+            <Input type="text" placeholder="Street Address" />
             {/* <FormHelperText>We&apos;ll never share your email.</FormHelperText> */}
           </FormControl>
         </Box>

@@ -2,11 +2,16 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["https://fakestoreapi.com", "fakestoreapi.com"],
+    domains: [
+      "https://picsum.photos",
+      "picsum.photos",
+      "https://fakestoreapi.com",
+      "fakestoreapi.com",
+    ],
   },
-  compiler: {
-    removeConsole: true,
-  },
+  // compiler: {
+  //   removeConsole: true,
+  // },
 };
 
 module.exports = nextConfig;

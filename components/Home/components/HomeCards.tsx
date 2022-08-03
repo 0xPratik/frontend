@@ -32,8 +32,14 @@ const Card = (props: CardProps) => {
         borderRadius="xl"
         spacing={8}
       >
-        <img src={props.image} />
-        <Heading size="lg" px={10} fontWeight={"800"} textAlign="center">
+        <img src={props.image} alt={props.heading} />
+        <Heading
+          size="lg"
+          px={10}
+          fontWeight={"800"}
+          textAlign="center"
+          color="#1E1E1E"
+        >
           {props.heading}
         </Heading>
         <Text px="8" textAlign={"center"} fontWeight="400" color="#4B3C06">

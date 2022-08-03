@@ -11,10 +11,12 @@ import {
 import { BellIcon } from "@chakra-ui/icons";
 import ConnectWallet from "../../../store/components/ConnecWallet";
 import { AddIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
 function AdminNav() {
+  const router = useRouter();
   return (
-    <HStack w="full" py={14} px={8} align="center" justify={"space-between"}>
+    <HStack w="full" py={14} align="center" justify={"space-between"}>
       <Box>
         <Heading fontSize="28px">Dashboard</Heading>
       </Box>
@@ -31,7 +33,11 @@ function AdminNav() {
           <BellIcon />
         </Circle>
         <ConnectWallet />
-        <Button leftIcon={<AddIcon />} variant="redGradient">
+        <Button
+          leftIcon={<AddIcon />}
+          variant="redGradient"
+          onClick={() => router.push("/admin/createproduct")}
+        >
           New Product
         </Button>
       </HStack>

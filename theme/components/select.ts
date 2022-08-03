@@ -1,24 +1,23 @@
 import type { ComponentStyleConfig } from "@chakra-ui/theme";
 
 const Select: ComponentStyleConfig = {
+  parts: ["field", "icon"],
   baseStyle: {
-    color: "orange.500",
-    w: "80px",
-    bg: "#2E2E2E",
-  },
-  sizes: {
-    sm: {
-      fontSize: "sm",
-      px: 4, // <-- px is short for paddingLeft and paddingRight
-      py: 3, // <-- py is short for paddingTop and paddingBottom
+    field: {
+      color: "orange.500",
+      bg: "#2E2E2E",
     },
   },
 
   variants: {
     pratikVariant: {
-      color: "orange.500",
-      w: "200px",
-      bg: "#2E2E2E",
+      field: {
+        color: "white",
+        _placeholder: {
+          color: "#8F8F8F",
+        },
+        bg: "#2E2E2E",
+      },
     },
   },
   defaultProps: {
