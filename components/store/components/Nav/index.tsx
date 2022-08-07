@@ -7,9 +7,9 @@ import {
   LinkBox,
 } from "@chakra-ui/react";
 import Logo from "../../../common/Logo";
-import DillIcon from "../../Icons/Dill";
-import BellIcon from "../../Icons/Bell";
-import CartIcon from "../../Icons/Cart";
+import DillIcon from "../../../common/icons/Dill";
+import BellIcon from "../../../common/icons/Bell";
+import CartIcon from "../../../common/icons/Cart";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import ConnectWallet from "../ConnecWallet";

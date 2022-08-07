@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useWallet, Wallet } from "@solana/wallet-adapter-react";
-import WalletIcon from "../../Icons/Wallet";
+import WalletIcon from "../../../common/icons/Wallet";
 
 function ConnectWallet() {
   const { wallets, select, connected, publicKey, wallet } = useWallet();

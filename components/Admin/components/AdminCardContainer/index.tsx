@@ -1,10 +1,10 @@
 import React from "react";
 import AdminCard from "../AdminCard";
 import { HStack, SimpleGrid } from "@chakra-ui/react";
-import CouponIcon from "../../Icons/Card/Coupon";
-import LockIcon from "../../Icons/Card/Lock";
-import SolIcon from "../../Icons/Card/Sol";
-import WalletIcon from "../../Icons/Card/Wallet";
+import CouponIcon from "../../../common/icons/Coupon";
+import LockIcon from "../../../common/icons/Card/Lock";
+import SolIcon from "../../../common/icons/Card/Sol";
+import WalletIcon from "../../../common/icons/Card/Wallet";
 
 const CardContent = [
   {

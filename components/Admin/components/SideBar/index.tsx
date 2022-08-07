@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Heading, Flex, Text, Button, Avatar } from "@chakra-ui/react";
 import Logo from "../../../common/Logo";
-import DashboardIcon from "../../Icons/Dashboard";
-import ProductIcon from "../../Icons/Products";
-import CouponIcon from "../../Icons/Coupon";
-import LogOutIcon from "../../Icons/Logout";
+
+import DashboardIcon from "../../../common/icons/Dashboard";
+import ProductIcon from "../../../common/icons/Products";
+import CouponIcon from "../../../common/icons/Coupon";
+import LogOutIcon from "../../../common/icons/Logout";
 
 const SideBarContents = [
   {

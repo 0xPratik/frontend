@@ -27,7 +27,7 @@ import {
 } from "@chakra-ui/react";
 import Cart from "../store/Icons/Cart";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import Lock from "../../components/store/Icons/Lock";
+import Lock from "../store/Icons/Lock";
 import { Product } from "@prisma/client";
 import axios from "axios";
 import { useAxios, Methods } from "../../hooks/useAxios";
