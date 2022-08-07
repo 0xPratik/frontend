@@ -18,7 +18,7 @@ function AdminNav() {
   return (
     <HStack w="full" py={14} align="center" justify={"space-between"}>
       <Box>
-        <Heading fontSize="28px">Dashboard</Heading>
+        <Heading fontWeight={600} fontSize="28px">Dashboard</Heading>
       </Box>
       <HStack>
         <Circle

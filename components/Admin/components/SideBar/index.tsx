@@ -37,7 +37,7 @@ function SideBar() {
         </Box>
         <Flex mt={8} align="center" justify={"flex-start"}>
           <Avatar mr={3} name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-          <Heading fontSize={"18px"}>Pratik Saria</Heading>
+          <Heading fontWeight={500} fontSize={"18px"}>Pratik Saria</Heading>
         </Flex>
         <Flex flexGrow={1} mt={10} direction={"column"} align="center">
           {SideBarContents.map((sidebar) => {
