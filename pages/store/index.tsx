@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage, InferGetStaticPropsType } from "next";
 import React from "react";
 import StorePage from "../../components/store/";
 import StoreLayout from "../../layout/StoreLayout";
@@ -16,7 +16,7 @@ type MainPageProps = {
   products: Product[];
 };
 
-const MainStorePage = ({ products }: MainPageProps) => {
+const MainStorePage = ({ products }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <StoreLayout>
       <StorePage products={products} />
@@ -25,8 +25,8 @@ const MainStorePage = ({ products }: MainPageProps) => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const res = await axios.get(`${server}/api/product`);
-  console.log(res);
+  const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const res = await axios.get(`${url}/api/product`);
   const products = res.data;
 
   if (!products) {

@@ -3,12 +3,15 @@ import { useRouter } from "next/router";
 import ProductDetailsPage from "../../components/Product/index";
 import StoreLayout from "../../layout/StoreLayout";
 import axios from "axios";
-import { GetStaticPaths, NextPage, GetStaticProps } from "next";
+import {
+  GetStaticPaths,
+  NextPage,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from "next";
 import { ParsedUrlQuery } from "querystring";
 import { Product } from "@prisma/client";
 import prisma from "../../db/index";
-import { server } from "../../config";
-
 interface IParams extends ParsedUrlQuery {
   id: string;
 }
@@ -17,7 +20,9 @@ interface ProductPageprops {
   product: Product;
 }
 
-const ProductPage = ({ product }: ProductPageprops) => {
+const ProductPage = ({
+      product,
+    }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <StoreLayout>
       <ProductDetailsPage product={product} />
@@ -26,13 +31,13 @@ const ProductPage = ({ product }: ProductPageprops) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get(`${server}/api/product`);
+  const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+  const res = await axios.get(`${url}/api/product`);
   // console.log("RESPONSE FROM getStaticPaths", res);
   const products: Product[] = res.data;
-  console.log("STATIC PATH PRPDUCT", products);
+  // console.log("STATIC PATH PRPDUCT", products);
 
   const paths = products.map((p) => {
-    console.log("CHECK THIS P", p.id);
     return {
       params: {
         id: `${p.id}`,
@@ -47,10 +52,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
   let product = undefined;
   if (context.params !== undefined) {
     const id = context.params as IParams;
-    console.log("THE ID IN getStaticProps is", id);
-    const res = await axios.get(`${server}/api/product/${id.id}`);
-    console.log("THIS IS THE RES", res);
-    console.log("RESPONSE", res);
+    const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+    const res = await axios.get(`${url}/api/product/${id.id}`);
     product = res.data;
   }
 

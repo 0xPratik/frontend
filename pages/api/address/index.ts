@@ -50,8 +50,13 @@ router
           postal_code: postal_code,
           suite: suite,
           user: {
-            connect: {
-              pubkey: pubKey,
+            connectOrCreate: {
+              where: {
+                pubkey: pubKey,
+              },
+              create: {
+                pubkey: pubKey,
+              },
             },
           },
         },

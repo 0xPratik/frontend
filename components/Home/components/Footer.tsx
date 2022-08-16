@@ -12,6 +12,7 @@ import {
   Image,
   Box,
   Center,
+  Tooltip,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -29,14 +30,14 @@ const Footer = (props: Props) => {
       marginTop={["10", "20"]}
     >
       <HStack px={["7", "0"]}>
-        <Image src="/assets/Logo.svg" width={50} height={50} />
+        <Image src="/assets/Logo.svg" width={35} height={35} />
         <Heading
           color={"#FFA7D2"}
           fontWeight="800"
           fontSize={"20px"}
           lineHeight="25px"
         >
-          Sakura Protocol
+          SolStore
         </Heading>
         <Box w="150" px={["7", "3"]}>
           <Image src="/assets/Badge.svg" width={"75%"} height="100%" />
@@ -48,8 +49,16 @@ const Footer = (props: Props) => {
         </Text>
         <Box>
           <HStack>
-            <Image src="/assets/twitter.svg" />
-            <Image src="/assets/discord.svg" />
+            <a
+              href="https://twitter.com/Solstoreapp"
+              rel="noreferrer"
+              target={"_blank"}
+            >
+              <Image src="/assets/twitter.svg" alt="SolStore Twitter" />
+            </a>
+            <Tooltip hasArrow label="Discord Coming Soon" shouldWrapChildren>
+              <Image src="/assets/discord.svg" alt="SolStore Discord" />
+            </Tooltip>
           </HStack>
         </Box>
       </Flex>

@@ -8,6 +8,7 @@ import {
   Button,
   GridItem,
   useBreakpointValue,
+  Image,
 } from "@chakra-ui/react";
 import React from "react";
 
@@ -32,7 +33,7 @@ const Card = (props: CardProps) => {
         borderRadius="xl"
         spacing={8}
       >
-        <img src={props.image} alt={props.heading} />
+        <Image src={props.image} alt={props.heading} />
         <Heading
           size="lg"
           px={10}
@@ -76,7 +77,7 @@ const HomeCards = (props: Props) => {
             textColor={"#0A482E"}
           />
           <Card
-            heading={"Token Swaps Using Jupiter"}
+            heading={"Token Swaps with Jupiter and Orca"}
             description={
               "Allow your Customers to pay in any SPL Token and we will make sure you get it in USDC"
             }
@@ -85,7 +86,7 @@ const HomeCards = (props: Props) => {
             textColor={"#621543"}
           />
           <Card
-            heading={"NFT Coupons"}
+            heading={"NFT Coupons and on-chain NFT Gift Cards"}
             description={
               "Give Coupons as NFT to your Customers so that they can use it later to get Discounts"
             }

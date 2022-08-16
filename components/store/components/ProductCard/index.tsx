@@ -142,6 +142,7 @@ function ProjectCard({ product }: ProjectCardProps) {
               color="#F23090"
               border="1px"
               borderRadius={"full"}
+              rounded="400px"
             >
               Add to Cart
             </Button>

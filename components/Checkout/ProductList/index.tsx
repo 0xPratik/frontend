@@ -41,7 +41,9 @@ function ProductList() {
               </Flex>
               <Box>
                 <Heading fontSize="18px">{item.title.slice(0, 19)}...</Heading>
-                <Text fontSize="14px">Quantity 1</Text>
+                <Text fontSize="14px">
+                  <span style={{ color: "#8F8F8F" }}>Quantity:</span> 1
+                </Text>
               </Box>
               <Box>
                 <Heading fontSize="18px">USDC {item.price}</Heading>

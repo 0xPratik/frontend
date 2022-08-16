@@ -27,8 +27,14 @@ export const useAxios = ({
 
   console.log("THE URL IS", url);
 
+  const baseURL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
+
   const fetchData = () => {
-    axios[method](`/api/${url}`, JSON.parse(headers), JSON.parse(body))
+    axios[method](
+      `${baseURL}/api/${url}`,
+      JSON.parse(headers),
+      JSON.parse(body)
+    )
       .then((res) => {
         setResponse(res.data);
       })

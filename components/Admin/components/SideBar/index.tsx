@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Heading, Flex, Text, Button, Avatar } from "@chakra-ui/react";
 import Logo from "../../../common/Logo";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import DashboardIcon from "../../../common/icons/Dashboard";
 import ProductIcon from "../../../common/icons/Products";
@@ -22,7 +23,11 @@ const SideBarContents = [
   },
 ];
 
-function SideBar() {
+function SideBar({
+  name = "Pratik Saria",
+  email = "sariapratik@gmail.com",
+  image = "https://bit.ly/dan-abramov",
+}) {
   return (
     <Box
       display={"flex"}
@@ -32,13 +37,15 @@ function SideBar() {
       py={14}
       h="full"
     >
-      <Flex direction={"column"}>
+      <Flex direction={"column"} w="80%">
         <Box>
           <Logo />
         </Box>
         <Flex mt={8} align="center" justify={"flex-start"}>
-          <Avatar mr={3} name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-          <Heading fontWeight={500} fontSize={"18px"}>Pratik Saria</Heading>
+          <Avatar mr={3} name="Dan Abrahmov" src={image} />
+          <Heading fontWeight={500} fontSize={"18px"}>
+            {name}
+          </Heading>
         </Flex>
         <Flex flexGrow={1} mt={10} direction={"column"} align="center">
           {SideBarContents.map((sidebar) => {
@@ -63,6 +70,7 @@ function SideBar() {
           variant={"admin"}
           w="full"
           colorScheme={"cyan"}
+          onClick={() => signOut()}
         >
           Logout
         </Button>

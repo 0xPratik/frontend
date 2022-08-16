@@ -1,6 +1,7 @@
 import React from "react";
 import { Heading, Text, HStack, Box, Button } from "@chakra-ui/react";
 import BackButton from "../../../../Product/components/BackButton";
+import ConnectWallet from "../../../../store/components/ConnecWallet";
 
 function Nav() {
   return (
@@ -17,7 +18,10 @@ function Nav() {
         </Box>
       </HStack>
       <Box>
-        <Button variant="redGradient">Create new Product</Button>
+        <HStack spacing={4}>
+          <ConnectWallet />
+          <Button variant="redGradient">Create new Product</Button>
+        </HStack>
       </Box>
     </HStack>
   );

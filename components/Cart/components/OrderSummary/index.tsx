@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -9,9 +9,23 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useCart } from "../../../../store/cartStore";
 
 function OrderSummary() {
   const router = useRouter();
+  const CartItems = useCart((state) => state.cart);
+  const [total, setTotal] = useState<number>(0);
+
+  useEffect(() => {
+    let tempTotal = 0;
+    CartItems.forEach((item) => {
+      tempTotal = tempTotal + item.price;
+    });
+    console.log(tempTotal);
+    if (tempTotal !== 0) {
+      setTotal(tempTotal);
+    }
+  }, [total]);
   return (
     <Box py={6} px={8} borderRadius="base" bg="#252525">
       <Heading color="white" pb={6} fontSize="20px">
@@ -23,7 +37,7 @@ function OrderSummary() {
             Sub Total
           </Text>
           <Text color="white" fontSize="18px">
-            USDC 100
+            USDC {total}
           </Text>
         </HStack>
         <Divider my={4} borderColor="#313131 " />
@@ -32,7 +46,7 @@ function OrderSummary() {
             Discount
           </Text>
           <Text color="white" fontSize="18px">
-            USDC 100
+            USDC 0
           </Text>
         </HStack>
         <Divider my={4} borderColor="#313131 " />
@@ -60,6 +74,7 @@ function OrderSummary() {
             color="#D6096E"
             w="full"
             fontSize={"12px"}
+            rounded="400px"
           >
             Proceed to Checkout
           </Button>

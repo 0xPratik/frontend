@@ -65,7 +65,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 Image
@@ -75,7 +75,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 Order ID
@@ -85,7 +85,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 Date
@@ -95,7 +95,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 Product Name
@@ -105,7 +105,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 User Address
@@ -115,7 +115,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 Status
@@ -125,7 +125,7 @@ function OrderTable() {
                 color="#888888"
                 textTransform="capitalize"
                 fontSize="12px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={4}
               >
                 View Details
@@ -138,7 +138,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Image
@@ -146,13 +146,14 @@ function OrderTable() {
                   height="50px"
                   style={{ borderRadius: "7px" }}
                   src={"https://picsum.photos/200/300"}
+                  alt="Random image"
                 />
               </Td>
               <Td
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 1233123123
@@ -161,7 +162,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 22/11/22
@@ -171,7 +172,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 Solar panel
@@ -181,12 +182,16 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 9iSD3wkC1aq3FcwgjJfEua9FkkZJWv7Cuxs6sKjc3VnR
               </Td>
-              <Td textTransform="capitalize" borderBottom={'1px solid #333333'} py={4}>
+              <Td
+                textTransform="capitalize"
+                borderBottom={"1px solid #333333"}
+                py={4}
+              >
                 <Badge p={2} borderRadius={"full"} colorScheme="green">
                   Accepted
                 </Badge>
@@ -196,7 +201,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="12px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Link>View Details</Link>
@@ -207,7 +212,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Image
@@ -215,13 +220,14 @@ function OrderTable() {
                   height="50px"
                   style={{ borderRadius: "7px" }}
                   src={"https://picsum.photos/200/300"}
+                  alt="Dummy"
                 />
               </Td>
               <Td
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 1233123123
@@ -230,7 +236,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 22/11/22
@@ -240,7 +246,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 Solar panel
@@ -250,13 +256,17 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 9iSD3wkC1aq3FcwgjJfEua9FkkZJWv7Cuxs6sKjc3VnR
               </Td>
-              <Td textTransform="capitalize" borderBottom={'1px solid #333333'} py={4}>
-                <Badge p={2} borderRadius={"full"} >
+              <Td
+                textTransform="capitalize"
+                borderBottom={"1px solid #333333"}
+                py={4}
+              >
+                <Badge p={2} borderRadius={"full"}>
                   Accepted
                 </Badge>
               </Td>
@@ -265,7 +275,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="12px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Link>View Details</Link>
@@ -276,7 +286,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Image
@@ -284,13 +294,14 @@ function OrderTable() {
                   height="50px"
                   style={{ borderRadius: "7px" }}
                   src={"https://picsum.photos/200/300"}
+                  alt="Dummy"
                 />
               </Td>
               <Td
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 1233123123
@@ -299,7 +310,7 @@ function OrderTable() {
                 fontWeight={"400"}
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 22/11/22
@@ -309,7 +320,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 Solar panel
@@ -319,12 +330,16 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="14px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 9iSD3wkC1aq3FcwgjJfEua9FkkZJWv7Cuxs6sKjc3VnR
               </Td>
-              <Td textTransform="capitalize" borderBottom={'1px solid #333333'} py={4}>
+              <Td
+                textTransform="capitalize"
+                borderBottom={"1px solid #333333"}
+                py={4}
+              >
                 <Badge p={2} borderRadius={"full"} colorScheme="green">
                   Accepted
                 </Badge>
@@ -334,7 +349,7 @@ function OrderTable() {
                 color="white"
                 textTransform="capitalize"
                 fontSize="12px"
-                borderBottom={'1px solid #333333'}
+                borderBottom={"1px solid #333333"}
                 py={2}
               >
                 <Link>View Details</Link>

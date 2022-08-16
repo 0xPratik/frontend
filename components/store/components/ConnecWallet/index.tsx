@@ -24,6 +24,7 @@ function ConnectWallet() {
         _expanded={{ bg: "brand.500" }}
         _focus={{ boxShadow: "outline" }}
         borderColor={"white"}
+        rounded="400px"
         px={"20.5px"}
         py={"20.5px"}
         as={Button}

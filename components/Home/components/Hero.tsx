@@ -11,6 +11,10 @@ import React from "react";
 type Props = {};
 
 const Hero = (props: Props) => {
+  function sendMail() {
+    var link = "mailto:pratiksaria2000@gmail.com";
+    window.location.href = link;
+  }
   return (
     <Container maxWidth={"100%"} py="20">
       <VStack spacing={9}>
@@ -40,7 +44,14 @@ const Hero = (props: Props) => {
           register yourselves for the launch.
         </Text>
         <HStack>
-          <Button size={"xl"} bg="white" color="black" mr={4}>
+          <Button
+            as={"a"}
+            href="#cta"
+            size={"xl"}
+            bg="white"
+            variant={"outlined"}
+            mr={4}
+          >
             Register Now
           </Button>
           <Button
@@ -50,6 +61,7 @@ const Hero = (props: Props) => {
             border="1px"
             borderColor={"white"}
             variant={"outlined"}
+            onClick={() => sendMail()}
           >
             Contact us
           </Button>

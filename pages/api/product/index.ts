@@ -32,7 +32,7 @@ router
   // Creates a new Product
   .post(async (req: NextApiRequest, res: NextApiResponse) => {
     try {
-      const { title, desc, price, image, category } = req.body;
+      const { title, desc, price, image, category, mint } = req.body;
       if (
         title === undefined ||
         desc === undefined ||
@@ -48,8 +48,17 @@ router
           price: price,
           title: title,
           category: {
-            create: {
-              name: category,
+            connectOrCreate: category,
+          },
+          isGated: {
+            connectOrCreate: {
+              where: {
+                mint: mint,
+              },
+              create: {
+                mint: mint,
+                amount: 1,
+              },
             },
           },
         },

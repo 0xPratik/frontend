@@ -4,7 +4,7 @@ const Select: ComponentStyleConfig = {
   parts: ["field", "icon"],
   baseStyle: {
     field: {
-      color: "orange.500",
+      color: "white",
       bg: "#2E2E2E",
     },
   },

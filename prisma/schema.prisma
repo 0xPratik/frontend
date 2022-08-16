@@ -46,9 +46,8 @@ model Address {
 
 model TokenGated {
   id       String    @id @default(cuid())
-  token    String    @unique
-  discount Int
-  uses     Int
+  mint    String    @unique
+  amount     Int
   Product  Product[]
 }
 
@@ -124,6 +123,11 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+}
+
+model EmailList {
+  id String @id @default(cuid())
+  email String @unique
 }
 
 model Account {

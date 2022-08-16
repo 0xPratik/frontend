@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Heading,
@@ -15,15 +15,23 @@ import {
   Button,
 } from "@chakra-ui/react";
 import Logo from "../../common/Logo";
-import Google from "../../store/Icons/Google";
-import Twitter from "../../store/Icons/Twitter";
+import Google from "../../common/icons/Google";
+import Twitter from "../../common/icons/Twitter";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 function MainLoginPage() {
   const { data: session } = useSession();
   console.log("THIS IS DATA SESSION", session);
   const [mail, setMail] = useState<string>("");
+  const router = useRouter();
   console.log(mail);
+
+  useEffect(() => {
+    if (session !== null) {
+      router.push("/admin");
+    }
+  }, [session]);
   return (
     <Flex
       direction={"column"}

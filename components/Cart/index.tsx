@@ -35,36 +35,25 @@ function Cart() {
         <Grid templateColumns={"auto 400px"} gridGap={24} w="100%">
           <GridItem>
             <Box py={7}>
-              {CartItems.length !== 0
-                ? CartItems.map((item) => {
-                    return (
-                      <>
-                        <CartCard
-                          key={item.id}
-                          id={item.id}
-                          imageurl={item.image}
-                          name={item.title}
-                          price={item.price}
-                          quantity={0}
-                        />
-                        <Divider my={4} borderColor="#313131  " />
-                      </>
-                    );
-                  })
-                : null}
-              {/* <CartCard
-                imageurl="https://bit.ly/dan-abramov"
-                name="Pratik"
-                price={10}
-                quantity={10}
-              />
-              <Divider my={4} borderColor="#313131  " />
-              <CartCard
-                imageurl="https://bit.ly/dan-abramov"
-                name="Pratik"
-                price={10}
-                quantity={10}
-              /> */}
+              {CartItems.length !== 0 ? (
+                CartItems.map((item) => {
+                  return (
+                    <>
+                      <CartCard
+                        key={item.id}
+                        id={item.id}
+                        imageurl={item.image}
+                        name={item.title}
+                        price={item.price}
+                        quantity={0}
+                      />
+                      <Divider my={4} borderColor="#313131  " />
+                    </>
+                  );
+                })
+              ) : (
+                <Heading>Your Cart is Empty</Heading>
+              )}
             </Box>
           </GridItem>
           <GridItem>

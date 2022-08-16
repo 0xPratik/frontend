@@ -5,7 +5,7 @@ import { Container, Box, Heading, Text } from "@chakra-ui/react";
 import AdminLayout from "../../layout/AdminLayout";
 import Adminpage from "../../components/Admin";
 
-const Admin: NextPage = () => {
+const Admin: NextPage = (props) => {
   return (
     <AdminLayout>
       <Adminpage />

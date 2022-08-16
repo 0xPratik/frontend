@@ -9,7 +9,7 @@ import Button from "./components/button";
 import Select from "./components/select";
 import Input from "./components/input";
 import TextArea from "./components/textarea";
-import Text from "./components/Text";
+import Text from "./components/text";
 import FormLabel from "./components/formlabel";
 import InputLeftAddon from "./components/inputLeftAddon";
 

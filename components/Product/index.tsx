@@ -25,9 +25,9 @@ import {
   MenuOptionGroup,
   MenuDivider,
 } from "@chakra-ui/react";
-import Cart from "../store/Icons/Cart";
+import Cart from "../common/icons/Cart/index";
 import { ArrowBackIcon } from "@chakra-ui/icons";
-import Lock from "../store/Icons/Lock";
+import Lock from "../common/icons/Lock/index";
 import { Product } from "@prisma/client";
 import axios from "axios";
 import { useAxios, Methods } from "../../hooks/useAxios";
@@ -171,6 +171,7 @@ function ProductDetailsPage({ product }: ProductDetailsPageProps) {
                       bg="#FFF4F9"
                       color="#F23090"
                       border="1px"
+                      rounded="400px"
                       borderRadius={"full"}
                     >
                       Add to Cart

@@ -28,7 +28,9 @@ import {
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import AdminImageIcon from "../../../Icons/AdminImage";
+import AdminImageIcon from "../../../../common/icons/AdminImage";
+import AddReward from "../AddReward";
+import TokenGated from "../TokenGated";
 
 const first = {
   rest: {
@@ -100,29 +102,6 @@ const third = {
     },
   },
 };
-
-const PreviewImage = forwardRef<BoxProps, typeof Box>((props, ref) => {
-  return (
-    <Box
-      bg="white"
-      top="0"
-      height="100%"
-      width="100%"
-      position="absolute"
-      borderWidth="1px"
-      borderStyle="solid"
-      rounded="sm"
-      borderColor="gray.400"
-      as={motion.div}
-      backgroundSize="cover"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="center"
-      backgroundImage={`url("https://image.shutterstock.com/image-photo/paella-traditional-classic-spanish-seafood-600w-1662253543.jpg")`}
-      {...props}
-      ref={ref}
-    />
-  );
-});
 
 const ImageInput = () => {
   const controls = useAnimation();
@@ -202,88 +181,150 @@ function Form() {
       precision: 2,
     });
 
+  const formik = useFormik({
+    initialValues: {
+      category: "",
+      price: 0,
+      name: "",
+      quantity: 0,
+      desc: "",
+    },
+    onSubmit: (values) => {
+      console.log(values);
+      alert(JSON.stringify(values));
+    },
+  });
+
   const inc = getIncrementButtonProps();
   const dec = getDecrementButtonProps();
   const input = getInputProps();
   return (
-    <Box
-      w="70vw"
-      bg="#1A1A1A"
-      border="1px"
-      borderRadius={"base"}
-      borderColor="#272727"
-      py={12}
-      px={10}
-    >
-      <ImageInput />
-      <HStack py={4}>
-        <FormControl>
-          <FormLabel variant="admin">Category</FormLabel>
-          <Select placeholder="Select Category" maxW={"400px"}>
-            <option value="option1">Shirts</option>
-            <option value="option2">Jeans</option>
-            <option value="option3">Shoes</option>
-          </Select>
-          {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
-        </FormControl>
-        <FormControl>
-          <FormLabel variant="admin">Price</FormLabel>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents="none"
-              color="gray.300"
-              fontSize="1.2em"
-              pl={8}
+    <form onSubmit={formik.handleSubmit}>
+      <Box
+        w="70vw"
+        bg="#1A1A1A"
+        border="1px"
+        borderRadius={"base"}
+        borderColor="#272727"
+        py={12}
+        px={10}
+      >
+        <ImageInput />
+        <HStack py={4}>
+          <FormControl>
+            <FormLabel htmlFor="category" variant="admin">
+              Category
+            </FormLabel>
+            <Select
+              name="category"
+              id="category"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.category}
+              placeholder="Select Category"
+              maxW={"400px"}
             >
-              USDC
-            </InputLeftElement>
+              <option value="shirts">Shirts</option>
+              <option value="jeans">Jeans</option>
+              <option value="shoes">Shoes</option>
+            </Select>
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="price" variant="admin">
+              Price
+            </FormLabel>
+            <InputGroup>
+              <InputLeftElement
+                pointerEvents="none"
+                color="gray.300"
+                fontSize="1.2em"
+                pl={8}
+              >
+                USDC
+              </InputLeftElement>
+              <Input
+                placeholder="0.00"
+                name="price"
+                onChange={formik.handleChange}
+                value={formik.values.price}
+                id="price"
+                type={"number"}
+                textAlign="right"
+                w="200px"
+              />
+            </InputGroup>
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+        </HStack>
+        <HStack py={4}>
+          <FormControl>
+            <FormLabel htmlFor="name" variant="admin">
+              Product Name
+            </FormLabel>
             <Input
-              placeholder="0.00"
-              type={"number"}
-              textAlign="right"
-              w="200px"
+              name="name"
+              onChange={formik.handleChange}
+              value={formik.values.name}
+              id="name"
+              placeholder="Enter Product Name"
+              maxW={"400px"}
             />
-          </InputGroup>
-          {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
-        </FormControl>
-      </HStack>
-      <HStack py={4}>
-        <FormControl>
-          <FormLabel variant="admin">Product Name</FormLabel>
-          <Input placeholder="Enter Product Name" maxW={"400px"} />
-          {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
-        </FormControl>
-        <FormControl>
-          <FormLabel variant="admin">Quantity</FormLabel>
-          <HStack spacing={0}>
-            <Button variant="solid" {...inc}>
-              +
-            </Button>
-            <Input
-              variant="admin"
-              {...input}
-              width="80px"
-              textAlign={"center"}
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+          <FormControl>
+            <FormLabel htmlFor="quantity" variant="admin">
+              Quantity
+            </FormLabel>
+            <HStack spacing={0}>
+              <Button variant="solid" {...inc}>
+                +
+              </Button>
+              <Input
+                variant="admin"
+                name="quantity"
+                onChange={formik.handleChange}
+                value={formik.values.quantity}
+                id="quantity"
+                {...input}
+                width="80px"
+                textAlign={"center"}
+              />
+              <Button variant="solid" {...dec}>
+                -
+              </Button>
+            </HStack>
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+        </HStack>
+        <HStack py={4}>
+          <FormControl>
+            <FormLabel htmlFor="desc" variant="admin">
+              Description (Optional)
+            </FormLabel>
+            <Textarea
+              name="desc"
+              onChange={formik.handleChange}
+              value={formik.values.desc}
+              id="desc"
+              placeholder="Enter the Description"
+              size="lg"
+              maxW={"400px"}
             />
-            <Button variant="solid" {...dec}>
-              -
-            </Button>
-          </HStack>
-          {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
-        </FormControl>
-      </HStack>
-      <HStack py={4}>
-        <FormControl>
-          <FormLabel variant="admin">Description (Optional)</FormLabel>
-          <Textarea
-            placeholder="Enter the Description"
-            size="lg"
-            maxW={"400px"}
-          />
-          {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
-        </FormControl>
-      </HStack>
-    </Box>
+            {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+          </FormControl>
+        </HStack>
+        <HStack spacing={4}>
+          <AddReward />
+          <TokenGated />
+        </HStack>
+        <Box pt={6}>
+          <Button variant="redGradient" type="submit">
+            Create Product
+          </Button>
+        </Box>
+      </Box>
+    </form>
   );
 }
 

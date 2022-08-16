@@ -26,8 +26,12 @@ const Button: ComponentStyleConfig = {
     border: "1px",
     borderRadius: "full",
     lineHeight: "20px",
-    rounded: "200px",
     fontWeight: "500",
+    rounded: "400px",
+    _hover: {
+      bg: "white",
+      color: "#F23090",
+    },
   },
   // Two sizes: sm and md
   sizes: {
@@ -44,6 +48,7 @@ const Button: ComponentStyleConfig = {
     xl: {
       fontSize: "xl",
       px: 12,
+
       py: 5,
     },
   },
@@ -58,6 +63,11 @@ const Button: ComponentStyleConfig = {
       bg: "#1F1F1F",
       fontWeight: "500",
       border: "none",
+      rounded: "300px",
+      _hover: {
+        color: "#FFFFFF",
+        bgGradient: "linear(to-l, #C12020, #D6096E)",
+      },
     },
     redGradient: {
       color: "#FFFFFF",

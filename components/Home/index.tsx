@@ -1,5 +1,5 @@
 import { Container, Heading } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import HomeCards from "./components/HomeCards";
@@ -8,7 +8,7 @@ import CTA from "./components/Cta";
 
 type Props = {};
 
-const index = (props: Props) => {
+const Index = (props: Props) => {
   return (
     <Container maxWidth={"100%"} padding={0} bg="blackAlpha.900">
       <Navbar />
@@ -20,4 +20,4 @@ const index = (props: Props) => {
   );
 };
 
-export default index;
+export default Index;
